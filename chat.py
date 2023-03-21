@@ -1,11 +1,7 @@
 import os
 import openai
 import json
-import numpy as np
-from numpy.linalg import norm
-import re
 from time import time,sleep
-from uuid import uuid4
 import datetime
 
 
@@ -91,7 +87,7 @@ def flatten_convo(conversation):
 if __name__ == '__main__':
     convo_length = 30
     openai.api_key = open_file('key_openai.txt')
-    default_system = 'I am an AI named Muse. My primary goal is to help the user plan, brainstorm, outline, and otherwise construct their work of fiction.'
+    default_system = 'I am an AI named Muse. My primary goal is to help the user plan, brainstorm, outline, and otherwise construct their AI Twitch streamer dialogue.'
     conversation = list()
     conversation.append({'role': 'system', 'content': default_system})
     counter = 0
@@ -108,11 +104,13 @@ if __name__ == '__main__':
         # infer user intent, disposition, valence, needs
         prompt = open_file('prompt_anticipate.txt').replace('<<INPUT>>', flat)
         anticipation = gpt3_completion(prompt)
-        print('\n\nANTICIPATION: %s' % anticipation)
+        # print('\n\nANTICIPATION: %s' % anticipation)
+        print(" - Received Anticipation data")
         # summarize the conversation to the most salient points
         prompt = open_file('prompt_salience.txt').replace('<<INPUT>>', flat)
         salience = gpt3_completion(prompt)
-        print('\n\nSALIENCE: %s' % salience)
+        # print('\n\nSALIENCE: %s' % salience)
+        print(" - Received salience data, sending request to MUSE")
         # update SYSTEM based upon user needs and salience
         conversation[0]['content'] = default_system + ''' Here's a brief summary of the conversation: %s - And here's what I expect the user's needs are: %s''' % (salience, anticipation)
         # generate a response
@@ -121,7 +119,7 @@ if __name__ == '__main__':
         print('\n\nMUSE: %s' % response)
         # increment counter and consolidate memories
         counter += 2
-        if counter >= 10:
-            # reset conversation
-            conversation = list()
-            conversation.append({'role': 'system', 'content': default_system})
+        # if counter >= 10:
+        #     # reset conversation
+        #     conversation = list()
+        #     conversation.append({'role': 'system', 'content': default_system})
