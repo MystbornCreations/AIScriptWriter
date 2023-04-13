@@ -5,3 +5,4 @@ chunk_summaries/*
 kg_topics/*
 gpt3_logs/*
 .idea/
+__pycache__/

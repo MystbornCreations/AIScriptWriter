@@ -4,6 +4,8 @@ import json
 from time import time,sleep
 import datetime
 
+from chat_history import ChatHistory
+
 
 def open_file(filepath):
     with open(filepath, 'r', encoding='utf-8') as infile:
@@ -36,45 +38,17 @@ def gpt3_embedding(content, engine='text-embedding-ada-002'):
     return vector
 
 
-def chatgpt_completion(messages, model="gpt-3.5-turbo"):
+def chatgpt_completion(messages, model="gpt-3.5-turbo", filename="muse"):
     response = openai.ChatCompletion.create(model=model, messages=messages)
     text = response['choices'][0]['message']['content']
-    filename = 'chat_%s_muse.txt' % time()
-    if not os.path.exists('chat_logs'):
-        os.makedirs('chat_logs')
-    save_file('chat_logs/%s' % filename, text)
+    filename = f"{time()}_{filename}.txt"
+    save_file('gpt3_logs/%s' % filename, prompt + '\n\n==========\n\n' + text)
     return text
-
-
-def gpt3_completion(prompt, engine='text-davinci-003', temp=0.0, top_p=1.0, tokens=400, freq_pen=0.0, pres_pen=0.0, stop=['USER:', 'RAVEN:']):
-    max_retry = 5
-    retry = 0
-    prompt = prompt.encode(encoding='ASCII',errors='ignore').decode()
-    while True:
-        try:
-            response = openai.Completion.create(
-                engine=engine,
-                prompt=prompt,
-                temperature=temp,
-                max_tokens=tokens,
-                top_p=top_p,
-                frequency_penalty=freq_pen,
-                presence_penalty=pres_pen,
-                stop=stop)
-            text = response['choices'][0]['text'].strip()
-            #text = re.sub('[\r\n]+', '\n', text)
-            #text = re.sub('[\t ]+', ' ', text)
-            filename = '%s_gpt3.txt' % time()
-            if not os.path.exists('gpt3_logs'):
-                os.makedirs('gpt3_logs')
-            save_file('gpt3_logs/%s' % filename, prompt + '\n\n==========\n\n' + text)
-            return text
-        except Exception as oops:
-            retry += 1
-            if retry >= max_retry:
-                return "GPT3 error: %s" % oops
-            print('Error communicating with OpenAI:', oops)
-            sleep(1)
+def gpt3_completion(prompt, prompt_type):
+    base_convo = list()
+    base_convo.append({'role': 'system', 'content': default_system})
+    base_convo.append({'role': 'user', 'content': prompt})
+    return chatgpt_completion(base_convo, filename=prompt_type)
 
 
 def flatten_convo(conversation):
@@ -88,27 +62,33 @@ if __name__ == '__main__':
     convo_length = 30
     openai.api_key = open_file('key_openai.txt')
     default_system = 'I am an AI named Muse. My primary goal is to help the user plan, brainstorm, outline, and otherwise construct their AI Twitch streamer dialogue.'
+    base_convo = list()
+    base_convo.append({'role': 'system', 'content': default_system})
+    base_convo.append({'role': 'user', 'content': open_file('.\prompts\emily_dialogue.txt')})
+    chat_history = ChatHistory('full_chat_history')
     conversation = list()
-    conversation.append({'role': 'system', 'content': default_system})
     counter = 0
     while True:
         # get user input, save to file
         a = input('\n\nUSER: ')
-        conversation.append({'role': 'user', 'content': a})
-        filename = 'chat_%s_user.txt' % time()
-        if not os.path.exists('chat_logs'):
-            os.makedirs('chat_logs')
-        save_file('chat_logs/%s' % filename, a)
+        chat_history.append_message('user', a)
+        convo_length = 2000  # Amount of words to use
+        conversation = list()
+        # append base_convo to conversation
+        conversation.extend(base_convo)
+        culled_messages = chat_history.get_culled_messages(convo_length)
+        conversation.extend(culled_messages)
         flat = flatten_convo(conversation)
         #print(flat)
         # infer user intent, disposition, valence, needs
         prompt = open_file('prompt_anticipate.txt').replace('<<INPUT>>', flat)
-        anticipation = gpt3_completion(prompt)
+        print(" - Sending request to GPT-3 for Anticipation data")
+        anticipation = gpt3_completion(prompt, "anticipation")
         # print('\n\nANTICIPATION: %s' % anticipation)
         print(" - Received Anticipation data")
         # summarize the conversation to the most salient points
         prompt = open_file('prompt_salience.txt').replace('<<INPUT>>', flat)
-        salience = gpt3_completion(prompt)
+        salience = gpt3_completion(prompt, "salience")
         # print('\n\nSALIENCE: %s' % salience)
         print(" - Received salience data, sending request to MUSE")
         # update SYSTEM based upon user needs and salience
