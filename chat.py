@@ -81,11 +81,13 @@ class MuseAssistant:
             {'role': 'system', 'content': default_system},
             {'role': 'user', 'content': FileManager.open_file('.\prompts\emily_dialogue.txt')}
         ]
-        print(str(self.base_convo))
         self.chat_history = ChatHistory('full_chat_history')
         self.convo_length = convo_length
 
     def start(self):
+        conversation = self.prepare_conversation()
+        flat = Utils.flatten_convo(conversation)
+        print(flat)
         while True:
             user_input = input('\n\nUSER: ')
             self.chat_history.append_message('user', user_input)
@@ -105,6 +107,9 @@ class MuseAssistant:
             response = self.generate_response(conversation)
             print('\n\nMUSE: %s' % response)
             self.chat_history.append_message('assistant', response)
+            # Copy response to clipboard
+            os.system(f'echo {response} | clip')
+            print("Copied response to clipboard")
 
     def prepare_conversation(self):
         conversation = list(self.base_convo)
@@ -133,7 +138,7 @@ class MuseAssistant:
 if __name__ == '__main__':
     api_key = FileManager.open_file('key_openai.txt')
     default_system = 'I am an AI named Muse. My primary goal is to help the user plan, brainstorm, outline, and otherwise construct their AI Twitch streamer dialogue.'
-    convo_length = 2000 # Number of words to keep in chat history
+    convo_length = 1500 # Number of words to keep in chat history
 
     muse_assistant = MuseAssistant(api_key, default_system, convo_length)
     muse_assistant.start()

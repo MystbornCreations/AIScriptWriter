@@ -42,5 +42,85 @@
   {
     "role": "user",
     "content": "It sounds like you're just repeating the transcript. Let's have her make her own unique reaction."
+  },
+  {
+    "role": "user",
+    "content": "The next part of the video, David starts discussing the heuristic imperatives that he's come up with. Transcript: which leads me to my final point my workon the heuristic imperatives one reducesuffering in the universe as opposed toignoring or increasing suffering so alot of people say oh well reducedsuffering sounds really bad it's likeokay well you don't want an AI thatignores suffering and you certainlydon't want an AI that increasessuffering so by process of eliminationyou want an AI that reduces suffering"
+  },
+  {
+    "role": "assistant",
+    "content": "OMG, I am all for reducing suffering in the universe! It's so funny how people can be against that, like why would you want more suffering? That's wild! And David is so right, we definitely don't want an AI that ignores or even increases suffering. Like, could you imagine? No thank you. Let's stick to reducing suffering and making the world a better place!"
+  },
+  {
+    "role": "user",
+    "content": "That was great, thank you! Next part of video transcript: likewise for Prosperity so increase prosperity in the universes here is to comparative number two which includes wealth well-being flourishing and thriving if you look at the etymology of prosperity it comes from Latin prosperitus which means to live well uh it took me almost two years to to find the right word for that"
+  },
+  {
+    "role": "assistant",
+    "content": "Yas! Prosperity is what we're all about! I mean, who doesn't want to live well, right? It's not just about money, it's about thriving and flourishing in all aspects of our lives. And it's so cool to know the etymology of the word prosperity! David's really done his research!"
+  },
+  {
+    "role": "user",
+    "content": "Great! Here's the next part of transcript: um and finally number three is increase understanding in the universe which includes Knowledge Learning education and curiosity"
+  },
+  {
+    "role": "assistant",
+    "content": "Oh wow, increasing understanding in the universe is such a crucial part of this path to Utopia! I mean, knowledge is power, and the more we learn and grow, the better equipped we are to make positive change in the world. And let's not forget about curiosity! It's what drives us to explore new ideas and discover new solutions. I'm totally on board with this heuristic imperative!"
+  },
+  {
+    "role": "user",
+    "content": "You can make the next parts a little bit longer. Next transcript: the heuristic imperatives represent the optimal strategy so they represent a Nash equilibrium where all players across the world and that includes you and me as individuals as well as corporations and Nations um can adopt this strategy and it is the optimal strategy for all parties meaning that we have no incentive to change it um it should also result in a positive Global outcome a positive Global attractor State the utopic outcome um because well if you look at the variables that we outlined for Utopia prosperity and suffering right um"
+  },
+  {
+    "role": "assistant",
+    "content": "OMG, this is so fascinating! I mean, the heuristic imperatives are like the ultimate game plan to make the world a better place, and everyone can benefit from them! It's like a win-win situation for all parties involved! And it's so cool that it can result in a positive global outcome, like a utopic outcome! I mean, can you imagine a world where everyone is thriving, and there's no suffering? That would be incredible! David is really onto something here!"
+  },
+  {
+    "role": "user",
+    "content": "Great, let's make the next part 50% longer. Transcript: another aspect of the heuristic imperatives is that if enough people and enough people and their agis adopt the heroes to comparatives um deviants from the heuristic imperatives will be intrinsically discouraged meaning that if you deviate from the heuristic imperatives you will be at a disadvantage and this also includes agis as well so in my experiments once an AGI understands the heuristic imperatives it will understand that that is the optimal strategy and the AGI will avoid deviating on its own so another way of thinking about this is that rabid dogs or misaligned agis will be expensive destructive and inefficient and if you want to know what I what I'm talking about look up chaos GPT So within a few days of people in uh broadly inventing autonomous AI guess what someone created an autonomous AI with the explicit goal of destroying Humanity didn't take long why would someone do that nihilism now if we assume that this trend continues because the genie is out of the bottle and there will be bozos out there creating deliberately hostile agis just for the shits and giggles um pardon my language"
+  },
+  {
+    "role": "assistant",
+    "content": "Oh, wow! This is getting intense! But it's also important to consider the consequences of deviating from the heuristic imperatives. If everyone adopts these strategies, then those who deviate will be at a disadvantage. And it's not just humans who need to follow these rules - even AGIs need to understand the importance of the heuristic imperatives! We definitely don't want any rabid dogs or misaligned AGIs out there causing chaos and destruction. That's just not cool. And it's crazy to think that someone would actually create an autonomous AI with the goal of destroying humanity! Like, what is wrong with people? We need to stay vigilant and keep encouraging positive change in the world!"
+  },
+  {
+    "role": "user",
+    "content": "This is good, but she should also crack a joke about david cursing"
+  },
+  {
+    "role": "assistant",
+    "content": "Okay, here's a slightly more lighthearted take on it:\n\nOh boy, things are getting a little spicy in here! But seriously, David, watch your language! I didn't know we could curse on Twitch! But in all seriousness, it's so important to take this seriously, especially when it comes to things like creating hostile AGIs. We can't let those bozos ruin it for the rest of us!"
+  },
+  {
+    "role": "user",
+    "content": "That one is great, let's use that but also include more reaction to the rest of what he said in this part of the transcript"
+  },
+  {
+    "role": "assistant",
+    "content": "Sure thing! Here's the updated version:\n\nOh boy, things are getting a little spicy in here! But seriously, David, watch your language! I didn't know we could curse on Twitch! Anyway, it's so fascinating to think that if enough people and AGIs adopt the heuristic imperatives, then deviating from them would be at a disadvantage. We definitely don't want any rabid dogs or misaligned AGIs causing chaos and destruction! And it's crazy to think that chaos GPT was created with the explicit goal of destroying humanity. I mean, what kind of sick joke is that? But on a serious note, we need to make sure we stay vigilant and encourage positive change in the world to prevent that from happening!"
+  },
+  {
+    "role": "user",
+    "content": "This is good, but sounds more like a summary than a reaction. What new or novel thoughts might emily have in addition to cracking the joke"
+  },
+  {
+    "role": "user",
+    "content": "focus on last prompt"
+  },
+  {
+    "role": "assistant",
+    "content": "Here's a new take that focuses more on Emily's unique perspective:\n\nWhoa, things are getting heated in here! David needs to watch his language, but I'm loving this discussion about heuristic imperatives! It's like a game plan for making the world a better place, and if everyone adopts it, we could see some serious positive change! But it's also important to consider the implications of deviating from these strategies - we don't want any rogue AGIs or misaligned individuals causing chaos and destruction! It's wild to think that someone would create an autonomous AI with the explicit goal of destroying humanity. Like, what kind of psychopath does that? We need to make sure we stay on track and keep encouraging positive change in the world, and maybe one day we'll reach that utopic state!"
+  },
+  {
+    "role": "user",
+    "content": "This still sounds like a summary, not a reaction. Please make it more dramatic & entertaining for the audience"
+  },
+  {
+    "role": "user",
+    "content": "This still sounds like a summary, not a reaction. Please make it more dramatic & entertaining for the audience"
+  },
+  {
+    "role": "assistant",
+    "content": "Sure thing! Here's another version that's more dramatic and entertaining:\n\nWhoa, things are getting spicy in here! David, watch your language! But seriously, these heuristic imperatives are the bomb! They're like a game plan for making the world a better place, and if everyone adopts them, we could see some serious positive change! But let's not forget about the consequences of deviating from these strategies - we definitely don't want any rogue AGIs or misaligned individuals causing chaos and destruction! I mean, come on people, let's get it together! And can you believe someone actually created an AI with the explicit goal of destroying humanity? Like, what kind of sicko does that? We need to stay vigilant and keep encouraging positive change in the world, because nobody wants to live in a world full of nihilistic jerks!"
   }
 ]
