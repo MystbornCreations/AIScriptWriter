@@ -39,11 +39,17 @@ def gpt3_embedding(content, engine='text-embedding-ada-002'):
 
 
 def chatgpt_completion(messages, model="gpt-3.5-turbo", filename="muse"):
-    response = openai.ChatCompletion.create(model=model, messages=messages)
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=messages,
+        max_tokens=1000,
+        temperature=0.9,
+    )
     text = response['choices'][0]['message']['content']
     filename = f"{time()}_{filename}.txt"
-    save_file('gpt3_logs/%s' % filename, prompt + '\n\n==========\n\n' + text)
+    save_file('gpt3_logs/%s' % filename, str(messages) + '\n\n==========\n\n' + text)
     return text
+
 def gpt3_completion(prompt, prompt_type):
     base_convo = list()
     base_convo.append({'role': 'system', 'content': default_system})
@@ -65,6 +71,8 @@ if __name__ == '__main__':
     base_convo = list()
     base_convo.append({'role': 'system', 'content': default_system})
     base_convo.append({'role': 'user', 'content': open_file('.\prompts\emily_dialogue.txt')})
+
+    print(str(base_convo))
     chat_history = ChatHistory('full_chat_history')
     conversation = list()
     counter = 0
